@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext');
 
 /* --- general ----------------------------------------------------------- */
 
 html {
-    font-family: 'Roboto';
+    font-family: 'Lato';
+    height: 100%;
 }
 
 a {
@@ -22,12 +23,15 @@ li {
 }
 
 body {
-    min-height: 200vh;
+    position: relative;
+    height: fit-content;
+    min-height: 100vh;
+    margin: 0;
 }
 
 img {
     width: 100%;
-    height: auto;
+    max-height: 20vh;
     overflow: hidden;
 }
 
@@ -45,15 +49,18 @@ h2 {
 
 header.main {
     margin: 0% 10%;
+    text-align: center;
 }
 
 .logo, .about {
+    display: inline-block;
     padding: 20px 0px;
     width: 100%;
 }
 
 .logo {
     font-size: 72px;
+    padding-top: 40px;
 }
 
 .logo img {
@@ -62,7 +69,12 @@ header.main {
 }
 
 .about {
-    padding-top: 0px
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+.about a {
+    text-decoration: underline red;
 }
 
 /* --- filter ----------------------------------------------------------- */
@@ -70,6 +82,7 @@ header.main {
 ul.categories {
     text-align: center;
     margin: 0% 10%;
+    padding: 50px 0;
 }
 
 .categories label {
@@ -86,7 +99,7 @@ ul.categories {
 
 select {
     padding: 5px;
-    background-color: #d0a4c0;
+    background-color: red;
     width: 100%;
 
     margin: 5px 0px
@@ -107,10 +120,12 @@ option {
 }
 
 .ss-main .ss-single-selected {
-    background-color: #c7a7bf;
+    background-color: white;
     border: 0;
+    border-bottom: 4px solid red;
     border-radius: 0;
     color: black;
+    height: 35px;
 }
 
 .ss-main .ss-single-selected .ss-arrow span {
@@ -126,11 +141,12 @@ ul.tools {
     text-align: left;
 
     padding-top: 10px;
+    padding-bottom: 30px;
 
     background-color: #fff;
 
     margin: 0% 10%;
-    height: 100%;
+    height: fit-content;
     position: relative;
 
     display: grid;
@@ -138,6 +154,7 @@ ul.tools {
     grid-template-rows: auto;
     grid-gap: 20px;
 
+    padding-bottom: 350px;
 }
 
 .categories {
@@ -147,16 +164,19 @@ ul.tools {
     grid-gap: 20px;
 }
 
+.tools li {
+    display: none;
+    position: relative;
+    min-height: 300px;
+    padding-bottom: 20px;
+}
+
 .tools li * {
     font-size: 14px;
 }
 
-.tools li {
-    display: none;
-}
-
 .tools li h2 {
-    color: #d0a4c0;
+    color: red;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase; 
@@ -165,18 +185,46 @@ ul.tools {
 
 .tools li .info span {
     font-weight: 600;
-    color: #d0a4c0;
+    color: red;
 }
 
 .tools li.active {
     display: block;
 }
 
+.tools li header a img {
+    padding-bottom: 10px;
+    height: 16vh;
+    object-fit: cover;
+    box-shadow: 0 0 10px #b8b8b8;
+}
+
+/* --- footer ----------------------------------------------------------- */
+
+footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+footer div {
+    display: inline-block;
+    padding: 20px;
+    color: black;
+    font-size: 14px;
+}
+
 /* --- responsive ----------------------------------------------------------- */
 
 @media screen and (min-width: 500px) {
-    .categories,
-    ul.tools{
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+    ul.tools {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
     }
@@ -184,11 +232,17 @@ ul.tools {
         width: 70%;
         height: auto;
     }
+    .getin {
+        grid-column: 1 / 3;
+    }
+    ul.tools {
+        padding-bottom: 250px;
+    }
 }
 
 @media screen and (min-width: 800px) {
     .categories,
-    ul.tools{
+    ul.tools {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         margin: 0px 10%;
@@ -200,11 +254,19 @@ ul.tools {
     .about {
         width: 60%;
     }
+    .getin {
+        grid-column: auto;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-    .categories,
-    ul.tools{
+    .categories {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        margin: 0px 10%;
+    }
+
+    ul.tools {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
         margin: 0px 10%;
